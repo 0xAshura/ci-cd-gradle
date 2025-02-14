@@ -1,14 +1,14 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.7.14' // Updated Spring Boot plugin
-    id 'io.spring.dependency-management' // Version omitted for automatic resolution
+    id 'org.springframework.boot' version '2.7.14'
+    id 'io.spring.dependency-management' version '1.1.3' // ✅ Explicit version required
 }
 
 group 'com.example'
 version '1.0-SNAPSHOT'
 
 java {
-    sourceCompatibility = '1.8' // Or '17' if you upgrade to Spring Boot 3.x
+    sourceCompatibility = '1.8' // Change to '17' if upgrading to Spring Boot 3.x
 }
 
 repositories {
@@ -17,6 +17,6 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '5.2'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'net.logstash.logback:logstash-logback-encoder:5.2' // ✅ Correct format
+    testImplementation 'junit:junit:4.12' // ✅ Correct format
 }
