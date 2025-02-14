@@ -32,8 +32,10 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build with Gradle
         run: ./gradlew build
-      - name: Upload Artifact  # Corrected: Using v4
-        uses: actions/upload-artifact@v4 # Use v4 or later!
+      - name: List build artifacts
+        run: ls -l build/libs/  # Debugging step
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
         with:
           name: Java-App-Artifact
           path: build/libs/*
@@ -49,14 +51,13 @@ jobs:
         uses: docker/setup-buildx-action@v2
         with:
           driver-opts: image=moby:buildkit
-      - name: Login to Docker Hub (or your registry)
+      - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
-          registry: registry.hub.docker.com
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and push Docker image
-        uses: docker/build-push-action@v3  # This one is okay!
+        uses: docker/build-push-action@v3
         with:
           context: .
           file: Dockerfile
