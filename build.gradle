@@ -1,13 +1,15 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.2.2.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'org.springframework.boot' version '2.7.14' // Updated Spring Boot plugin
+    id 'io.spring.dependency-management' // Version omitted for automatic resolution
 }
 
 group 'com.example'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+java {
+    sourceCompatibility = '1.8' // Or '17' if you upgrade to Spring Boot 3.x
+}
 
 repositories {
     mavenCentral()
