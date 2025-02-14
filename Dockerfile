@@ -1,5 +1,5 @@
-# Use an alternative OpenJDK image (more commonly available)
-FROM openjdk:17-jre-alpine3.18
+# Use the official OpenJDK 17 Alpine variant
+FROM openjdk:17-alpine
 
 # Expose port 8080 for the application
 EXPOSE 8080
